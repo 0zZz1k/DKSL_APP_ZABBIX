@@ -1,11 +1,8 @@
 cd /tmp
-if [ -f $(basename -- $ZABBIX_VERSION) ]
-then
-  apt install ./$(basename -- $ZABBIX_VERSION)
-else
-  wget $ZABBIX_VERSION
-  apt install ./$(basename -- $ZABBIX_VERSION)
-fi
+rsync -vr ./isogit/iso/ ./iso/netping/zabbix/
+rsync -vr ./isogit/config.sh ./iso/netping/zabbix/
+rm -rf ./isogit
+apt install /tmp/iso/netping/zabbix/zabbix-release_5.2-1+ubuntu20.04_all.deb
 #zabbix
 apt clean
 apt install --download-only -y zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-nginx-conf zabbix-agent
@@ -15,4 +12,3 @@ cp ./zabbix-release_*_all.deb ./iso/netping/deb/zabbix/
 apt clean
 apt install --download-only -y postgresql
 cp /var/cache/apt/archives/*.deb ./iso/netping/deb/pgsql
-
