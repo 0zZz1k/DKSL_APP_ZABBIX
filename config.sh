@@ -1,6 +1,6 @@
 cd /tmp
 rsync -vr ./isogit/iso/ ./iso/netping/zabbix/
-rsync -vr ./isogit/config.sh ./iso/netping/zabbix/
+#rsync -vr ./isogit/config.sh ./iso/netping/zabbix/
 rm -rf ./isogit
 apt install /tmp/iso/netping/zabbix/zabbix-release_5.2-1+ubuntu20.04_all.deb
 #zabbix
